@@ -1,0 +1,33 @@
+
+<div class="page-content">
+    <div class="header"><img src="./favicon1.png" alt="logo - Kółko krzyżyk">
+        <h1> Kółko i krzyżyk</h1>
+    </div>
+    <nav class="navigation">
+        <button id="newgame" *ngIf="isNewGameButtonVisible" (click)="startgame()">Zacznij grać</button>
+    </nav>
+    <div id="game" *ngIf="isBoardVisible">
+        <p id="statusGame">Aktualny stan gry: {{gameStatusMesssage}}</p>
+        <table class="center table-border" border="1">
+            <tr>
+                <td data-row="0" data-col="0" (click)="onFieldClicked($event)"></td>
+                <td data-row="0" data-col="1" (click)="onFieldClicked($event)"></td>
+                <td data-row="0" data-col="2" (click)="onFieldClicked($event)"></td>
+            </tr>
+            <tr>
+                <td data-row="1" data-col="0" (click)="onFieldClicked($event)"></td>
+                <td data-row="1" data-col="1" (click)="onFieldClicked($event)"></td>
+                <td data-row="1" data-col="2" (click)="onFieldClicked($event)"></td>
+            </tr>
+            <tr>
+                <td data-row="2" data-col="0" (click)="onFieldClicked($event)"></td>
+                <td data-row="2" data-col="1" (click)="onFieldClicked($event)"></td>
+                <td data-row="2" data-col="2" (click)="onFieldClicked($event)"></td>
+            </tr>
+        </table>
+        <button id="start" (click)="startgame()">Graj od nowa</button>
+        <button id="end" (click)="endgame()">Koniec gry</button>
+    </div>
+    <div class="footer"><a href="https://pl.wikipedia.org/wiki/K%C3%B3%C5%82ko_i_krzy%C5%BCyk" target="_blank">Jak grać w kółko i krzyżyk</a>
+    </div>
+</div>

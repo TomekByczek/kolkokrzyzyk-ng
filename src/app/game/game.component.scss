@@ -1,0 +1,103 @@
+img
+{
+    height: 100%;
+}
+body 
+{
+    background-color: dimgray;
+    color: white;
+    font-family: 'segoe ui';
+    display: grid;
+    grid-template-columns: 4em 1fr 4em ;
+    grid-template-rows: 4em 1fr 4em;
+    grid-template-areas: 
+    "left-margin top-margin right-margin"
+    "left-margin page-content right-margin"
+    "left-margin bottom-margin right-margin";
+}
+@media(max-width : 460px)
+{
+body
+    {
+        background-color: yellow;
+        display: grid;
+        grid-template-columns: 1fr ;
+        grid-template-rows: 4em 1fr ;
+        grid-template-areas: 
+        "top-margin"
+        "page-content";
+    }
+}
+.page-content
+{
+    background-color: dimgray;
+    display: grid;
+    grid-area: page-content;
+    grid-template-columns: 1fr;
+    grid-template-rows: 3em 1em 1fr 2em;
+    grid-template-areas:
+    "header"
+    "navigation"
+    "game"
+    "footer";
+    grid-gap: 1em;
+}
+.header
+{
+    display: flex;    
+    grid-area: header;
+    justify-content: center;
+    align-items: center;
+}
+.navigation
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: navigation;
+}
+.footer
+{
+    grid-area: footer;
+}
+#statusGame
+{
+color: rgb(161, 186, 186);
+}
+
+#game
+{
+    grid-area: game;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.center
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+a
+{
+    color: white;
+}
+.table-border 
+{
+    border: 3px solid;
+    border-collapse: collapse;
+    border-color: black;
+}
+td
+{
+    height: 50px;
+    width: 50px;
+}
+#newgame {
+    color:brown;
+}
+#start {
+    color: rgb(3, 173, 3);
+}
+#end {
+    color: rgb(4, 160, 4);
+}
