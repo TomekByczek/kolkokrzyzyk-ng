@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+body 
+{
+    background-color: dimgray;
+    color: white;
+    font-family: 'segoe ui';
+    display: grid;
+    grid-template-columns: 4em 1fr 4em ;
+    grid-template-rows: 4em 1fr 4em;
+    grid-template-areas: 
+    "left-margin top-margin right-margin"
+    "left-margin page-content right-margin"
+    "left-margin bottom-margin right-margin";
+}
+@media(max-width : 460px)
+{
+body
+    {
+        background-color: yellow;
+        display: grid;
+        grid-template-columns: 1fr ;
+        grid-template-rows: 4em 1fr ;
+        grid-template-areas: 
+        "top-margin"
+        "page-content";
+    }
+}
