@@ -1,10 +1,11 @@
 import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
+import { FieldComponent } from "./field/field.component";
 
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FieldComponent],
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss',
   
