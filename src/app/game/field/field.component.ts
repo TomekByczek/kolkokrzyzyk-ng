@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
 selector : 'app-field',
@@ -10,12 +10,20 @@ templateUrl : './field.component.html',
 })
 
 export class FieldComponent{
+@Input() xOrO: boolean | undefined;
+@Output() fieldClicked = new EventEmitter<void>();
 
-  public xOrO: boolean | undefined = undefined //false-play X, true-play O
-  public token: string = '___'
-  
- madeToken() {
-  this.token = 'X'
+
+ writeSymbol(): string {
+  if (this.xOrO===false) {
+    return 'X';
+  }
+  if (this.xOrO===true) {
+    return 'O';
+  }
+  else {
+    return '_';
+  }
  }
 
 }

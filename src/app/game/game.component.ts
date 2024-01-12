@@ -31,13 +31,11 @@ export class GameComponent implements OnInit {
       if (result == true) {
         if (this.xOrO == false) {
           this.table[row][col] = false
-          event.srcElement.innerHTML = 'X'
           this.xOrO = true
           this.showMessage('Gra rozpoczęta! Gra O')
         }
         else {
           this.table[row][col] = true
-          event.srcElement.innerHTML = 'O'
           this.xOrO = false
           this.showMessage('Gra rozpoczęta! Gra X')
         }
@@ -85,7 +83,7 @@ export class GameComponent implements OnInit {
     this.showMessage('Gra zakonczona');
   }
 
-  fieldcheck(row: number, col: number) {
+  fieldcheck(row: number, col: number):boolean|undefined {
     if (row < 1 || row > 3) {
       throw 'Wartosc wiersza powinien zawierac sie miedzy 1 a 3';
     }
