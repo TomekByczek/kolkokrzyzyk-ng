@@ -13,6 +13,15 @@ export class FieldComponent{
 @Input() xOrO: boolean | undefined;
 @Output() fieldClicked = new EventEmitter<void>();
 
+isFieldEmpty(row: number, col: number):any {
+  var field = undefined;
+  if (field == undefined) {
+   this.fieldClicked.emit();
+  }
+  else {
+    return false;
+  }
+}
 
  writeSymbol(): string {
   if (this.xOrO===false) {
@@ -22,7 +31,7 @@ export class FieldComponent{
     return 'O';
   }
   else {
-    return '_';
+    return '__';
   }
  }
 

@@ -72,7 +72,6 @@ export class GameComponent implements OnInit {
     this.table.push([undefined, undefined, undefined]);
     this.table.push([undefined, undefined, undefined]);
     this.table.push([undefined, undefined, undefined]);
-    this.clinerFields();
     this.showMessage('Gra rozpoczęta')
   }
 
@@ -84,21 +83,21 @@ export class GameComponent implements OnInit {
   }
 
   fieldcheck(row: number, col: number):boolean|undefined {
-    if (row < 1 || row > 3) {
+    if (row < 0|| row > 2) {
       throw 'Wartosc wiersza powinien zawierac sie miedzy 1 a 3';
     }
-    if (col < 1 || col > 3) {
+    if (col < 0 || col > 2) {
       throw 'Wartosc kolumny powinien zawierac sie miedzy 1 a 3';
     }
     else {
-      var field = this.table[row - 1][col - 1];
+      var field = this.table[row][col];
       return field;
     }
   }
 
 
 
-  isFieldEmpty(row: number, col: number) {
+  isFieldEmpty(row: number, col: number):boolean {
     var field = this.table[row][col];
     if (field == undefined) {
       return true;
@@ -113,14 +112,7 @@ export class GameComponent implements OnInit {
   //     gameFields[i].addEventListener('click', this.onFieldClicked);
   //   }
   // }
-  clinerFields() {
-    var fields = document.getElementsByTagName('td');
-    console.log(fields);
-    //?
-    for (var i = 0; fields.length > i; i++) {
-      fields[i].innerHTML = '';
-    }
-  }
+  
   isWinner() {
     if (this.table[0][0] == true && this.table[0][1] == true && this.table[0][2] == true)
       return true;
