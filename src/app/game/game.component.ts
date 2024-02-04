@@ -12,37 +12,35 @@ import { FieldComponent } from "./field/field.component";
 })
 export class GameComponent implements OnInit {
   public isgameactiv = false;
-  public isBoardVisible = false;
-  public xOrO: boolean | undefined; //x-false o-true 
+  public isBoardVisible = false; 
+  public xOrO: boolean | undefined;  //x-false o-true
   public table: (boolean | undefined)[][] = [];
   public isNewGameButtonVisible = true;
   public gameStatusMesssage: string = '';
+  public playing!: boolean; //x-false o-true
 
   ngOnInit(): void {
-    // this.initFieldHandlers();
+    
     this.isBoardVisible = false;
   }
 
-  onFieldClicked(event: any) {
-    var row = event.srcElement.dataset.row
-    var col = event.srcElement.dataset.col
-    var result = this.isFieldEmpty(row, col)
-    if (this.isgameactiv == true) {
-      if (result == true) {
-        if (this.xOrO == false) {
-          this.table[row][col] = false
-          this.xOrO = true
+  onFieldClicked(isFieldEmpty: boolean, row: number, col: number) {
+    if (this.isgameactiv === true && isFieldEmpty === true) {
+          this.table[row][col] = this.playing;
+          this.playing = !this.playing;
+        }
+     if (this.playing === true){
           this.showMessage('Gra rozpoczęta! Gra O')
         }
-        else {
-          this.table[row][col] = true
-          this.xOrO = false
-          this.showMessage('Gra rozpoczęta! Gra X')
-        }
-      } else {
-        this.showMessage('Znajdź puste pole')
-      }
+      else {
+      this.showMessage('Gra rozpoczęta! Gra X')
     }
+    if (isFieldEmpty === false){
+      this.showMessage('Znajdź puste pole')
+    }
+    
+        
+    
     var winner = this.isWinner()
     var freeFields = this.isFreeFields()
     console.log(freeFields)
@@ -66,13 +64,12 @@ export class GameComponent implements OnInit {
     this.table = [];
     this.isgameactiv = true;
     this.isBoardVisible = true;
-    this.xOrO = false;
+    this.playing = false //x-false, o-true
     this.showMessage('Gra rozpoczęta! Gra X');
     this.isNewGameButtonVisible = false;
     this.table.push([undefined, undefined, undefined]);
     this.table.push([undefined, undefined, undefined]);
     this.table.push([undefined, undefined, undefined]);
-    this.showMessage('Gra rozpoczęta')
   }
 
   endgame() {
@@ -97,22 +94,7 @@ export class GameComponent implements OnInit {
 
 
 
-  isFieldEmpty(row: number, col: number):boolean {
-    var field = this.table[row][col];
-    if (field == undefined) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }
-  // initFieldHandlers() {
-  //   var gameFields = document.getElementsByTagName('td');
-  //   for (var i = 0; gameFields.length > i; i++) {
-  //     gameFields[i].addEventListener('click', this.onFieldClicked);
-  //   }
-  // }
-  
+
   isWinner() {
     if (this.table[0][0] == true && this.table[0][1] == true && this.table[0][2] == true)
       return true;

@@ -11,16 +11,17 @@ templateUrl : './field.component.html',
 
 export class FieldComponent{
 @Input() xOrO: boolean | undefined;
-@Output() fieldClicked = new EventEmitter<void>();
+@Output() fieldClicked = new EventEmitter<boolean>();
 
-isFieldEmpty(row: number, col: number):any {
-  var field = undefined;
-  if (field == undefined) {
-   this.fieldClicked.emit();
+isFieldEmpty():any {  //?
+
+  if (this.xOrO === undefined) {
+    this.fieldClicked.emit(true);
   }
   else {
-    return false;
+    this.fieldClicked.emit(false);
   }
+  
 }
 
  writeSymbol(): string {
