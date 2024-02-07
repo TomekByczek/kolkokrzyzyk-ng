@@ -30,33 +30,33 @@ export class GameComponent implements OnInit {
           this.playing = !this.playing;
         }
      if (this.playing === true){
-          this.showMessage('Gra rozpoczęta! Gra O')
+          this.showMessage('Gra rozpoczęta! Gra O');
         }
       else {
-      this.showMessage('Gra rozpoczęta! Gra X')
+      this.showMessage('Gra rozpoczęta! Gra X');
     }
     if (isFieldEmpty === false){
-      this.showMessage('Znajdź puste pole')
+      this.showMessage('Znajdź puste pole');
     }
     
         
     
-    var winner = this.isWinner()
-    var freeFields = this.isFreeFields()
-    console.log(freeFields)
+    var winner = this.isWinner();
+    var freeFields = this.isFreeFields();
+    console.log(freeFields);
     //?
     if (winner == true) {
       this.showMessage('Wygrało O');
-      this.isgameactiv = false
+      this.isgameactiv = false;
     }
     if (winner == false) {
       this.showMessage('Wygrał X');
-      this.isgameactiv = false
+      this.isgameactiv = false;
     }
     if (winner == null && freeFields == false) {
 
       this.showMessage('Remis, zagraj jeszcze raz');
-      this.isgameactiv = false
+      this.isgameactiv = false;
     }
   }
 
@@ -64,7 +64,7 @@ export class GameComponent implements OnInit {
     this.table = [];
     this.isgameactiv = true;
     this.isBoardVisible = true;
-    this.playing = false //x-false, o-true
+    this.playing = false; //x-false, o-true
     this.showMessage('Gra rozpoczęta! Gra X');
     this.isNewGameButtonVisible = false;
     this.table.push([undefined, undefined, undefined]);
@@ -133,7 +133,7 @@ export class GameComponent implements OnInit {
 
   isFreeFields() {
     for (var row = 0; this.table.length > row; row++) {
-      var index = this.table[row].indexOf(undefined)
+      var index = this.table[row].indexOf(undefined);
       if (index >= 0) {
         return true;
       }
